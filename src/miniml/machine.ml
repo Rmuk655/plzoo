@@ -21,20 +21,22 @@
     the first instruction of the first frame from [f].
 *)
 
-(** The datatype of variable names. A more efficient implementation
-    would use de Bruijn indices but we want to keep things simple. *)
+(** Type is used to rename Syntax.name as name, or in other words, if we use name in the machine code,
+  the OCaml compiler must interpret it as Syntax.name only. "name" is basically a shortform for Syntax.name.**)
 type name = Syntax.name
 
-(** Machine values. *)
+    (** Machine values (Values that exist at runtime, basically the final result after following the code instructions).*)
 type mvalue =
   | MInt of int                        (** Integer *)
   | MBool of bool                      (** Boolean value *)
   | MClosure of name * frame * environ (** Closure *)
-
+      (* Added machine value for exception handling, strings*)
+      | MExn of string                      (** for both DivisionByZero and GenericException *)
+      | MString of string                   (** String value *)
 (**
    There are two kinds of machine instructions.
 
-   The first kind manipules tha stack of machine values. These are
+       The first kind manipulates tha stack of machine values. These are
    arithmetical operations, integer comparison, variable lookup,
    placing constants onto the stack, and closure formation.
 
