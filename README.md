@@ -13,7 +13,7 @@ With the new exception handling system, users can now raise and catch exceptions
 
 ## Installation
 
-To get started with MiniML, clone the repository: https://github.com/Rmuk655/plzoo and build the environment.
+To get started with MiniML, clone the repository: https://github.com/Rmuk655/Miniml_Compiler and build the environment.
 
 **If you are under the `plzoo` directory, run:** python ./buildRun.py src/miniml/test_exn test_exp
 
